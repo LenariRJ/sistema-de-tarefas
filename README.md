@@ -20,3 +20,6 @@ python menu_tarefas.py
 ### Limitações
 
 As tarefas são armazenadas somente em memória. Portanto, todos os registros são perdidos quando o programa é encerrado. O protótipo ainda não utiliza banco de dados nem interface web.
+
+Autor: Leandro Nazareth Ribeiro
+Matrícula: 202422923
