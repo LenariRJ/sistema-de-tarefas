@@ -97,6 +97,51 @@ O sistema apresenta:
 
 Os dados das tarefas são temporários e definidos diretamente na view, sem utilização de banco de dados.
 
+## Semana 7 — Persistência de Categorias e Tarefas com Django
+
+### Objetivo
+
+Implementar a persistência das categorias e tarefas utilizando o banco de dados do Django.
+
+### Implementações
+
+- Criação do model `Categoria`;
+- Criação do model `Tarefa`;
+- Relacionamento entre `Tarefa` e `Categoria` com `ForeignKey`;
+- Criação e aplicação das migrations;
+- Registro dos models no Django Admin;
+- Cadastro de 2 categorias;
+- Cadastro de 2 tarefas;
+- Consultas utilizando Django ORM;
+- Atualização da situação de uma tarefa;
+- Listagem das tarefas diretamente do banco de dados.
+
+### Dados cadastrados
+
+Categorias:
+- Estudos
+- Pessoal
+
+Tarefas:
+- Estudar Django
+- Organizar atividades
+
+### Consultas ORM realizadas
+
+```python
+Tarefa.objects.all()
+Tarefa.objects.filter(situacao="PENDENTE")
+Tarefa.objects.order_by("data_prevista")
+
+Também foi realizada a atualização da situação de uma tarefa pendente para concluída utilizando:
+tarefa = Tarefa.objects.filter(situacao="PENDENTE").first()tarefa.situacao = "CONCLUIDA"tarefa.save()
+
+
+Dificuldade encontrada
+A principal dificuldade foi adaptar o projeto para deixar de utilizar dados fixos na view e passar a buscar as tarefas diretamente do banco de dados.
+Solução
+Foram criados os models Categoria e Tarefa, realizadas as migrations e alterada a view de listagem para utilizar Tarefa.objects.all(). Dessa forma, os dados passaram a ser persistidos no banco de dados e continuam disponíveis após reiniciar o servidor.
+
 
 Autor: Leandro Nazareth Ribeiro
 Matrícula: 202422923

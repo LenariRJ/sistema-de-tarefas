@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Tarefa
 
 
 def inicio(request):
@@ -6,26 +7,5 @@ def inicio(request):
 
 
 def lista_tarefas(request):
-    tarefas = [
-        {
-            "titulo": "Estudar URLs no Django",
-            "prioridade": "Alta",
-            "situacao": "Pendente",
-        },
-        {
-            "titulo": "Criar template de listagem",
-            "prioridade": "Média",
-            "situacao": "Concluída",
-        },
-        {
-            "titulo": "Testar aplicação no navegador",
-            "prioridade": "Baixa",
-            "situacao": "Pendente",
-        },
-    ]
-
-    return render(
-        request,
-        "tarefas/lista.html",
-        {"tarefas": tarefas}
-    )
+    tarefas = Tarefa.objects.all()
+    return render(request, "tarefas/lista.html", {"tarefas": tarefas})
